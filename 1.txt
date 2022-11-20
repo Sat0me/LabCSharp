@@ -1,0 +1,44 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+      int a = 0, b = 0, k = 0;
+      Console.Write("Введите числа через пробел: ");
+      string textn = Console.ReadLine();
+      string[] my = textn.Split(new Char[] {' '});
+      foreach(string item in my)
+      {
+        int num = int.Parse(item);
+        if(k == 0) {
+          a = num;
+          k++;
+          }
+        else b = num;
+      }
+      int c = 0, d = a, number = 0, ans = 0;
+      while(d > 0)
+      {
+        int d_num = d % 10;
+        d /= 10;
+        c = b;
+        while(c > 0)
+        {
+          if((c % 10) == d_num) number = d_num;
+          c /= 10;
+        }
+      }
+      d = a;
+      while(d > 0)
+      {
+        int d_num = d % 10;
+        d /= 10;
+        if(d_num == number) ans++;
+      }
+      Console.WriteLine($"a = {a} \nb = {b} \n");
+      Console.Write("Ответ: ");
+      for(int i = 0; i < ans; i++)
+      {
+        Console.Write(number);
+      }
+    } 
+}

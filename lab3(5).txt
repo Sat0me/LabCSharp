@@ -1,0 +1,37 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+      Start:
+        Console.Write("Введите данные от банковской карты: ");
+        string number = Console.ReadLine();
+        char[] arr_num = number.ToCharArray();
+        int n = 14, min  = int.MaxValue, max = int.MinValue;
+        if(arr_num.Length != n)
+        {
+          Console.WriteLine("Допущена ошибка при введении данных. Попробуйте еще раз.");
+          goto Start;
+        }
+        for(int i = 0; i < n; i++)
+        {
+          if(arr_num[i] > max) max = arr_num[i];
+          if(arr_num[i] < min) min = arr_num[i];
+        }
+        char ch_max = (char)max;
+        char ch_min = (char)min;
+        Array.Resize(ref arr_num, 16);
+        n += 2;
+        for(int i = n - 1; i > 1; i--)
+        {
+          arr_num[i] = arr_num[i-2];
+        }
+        arr_num[0] = ch_min;
+        arr_num[1] = ch_max;
+        Array.Reverse(arr_num);
+        Console.Write("Ответ: ");
+        for(int i = 0; i < n; i++)
+        {
+          Console.Write(arr_num[i]);
+        }
+    }
+}

@@ -1,0 +1,26 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+      Start:
+        Console.Write("Введите размер ваших чисел: ");
+        int k = int.Parse(Console.ReadLine()); 
+        Console.Write("Введите первое число: ");
+        string a = Console.ReadLine();
+        Console.Write("Введите второе число: ");
+        string b = Console.ReadLine();
+        char[] arr_a = a.ToCharArray();
+        char[] arr_b = b.ToCharArray();
+        if(arr_a.Length != arr_b.Length)
+        {
+          Console.WriteLine("Ошибка, проверьте размер чисел и попробуйте заново");
+          goto Start;
+        }
+        int n = 0;
+        for(int i = 0; i < k; i++)
+        {
+          if(arr_a[i] == arr_b[i]) n++;
+        }
+        Console.WriteLine($"Совпадений: {n}");
+    }
+}

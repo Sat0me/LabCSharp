@@ -1,0 +1,24 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+      int k = 0, star = 1, space = 0;
+      Console.Write("Введите высоту елочки: ");
+      k = int.Parse(Console.ReadLine());
+      space = k;
+      for(int i = 0; i < k; i++)
+      {
+        for(int j = 0; j < space; j++)
+        {
+          Console.Write(" ");
+        }
+        for(int l = 0; l < star; l++)
+        {
+          Console.Write("*");
+        }
+        Console.WriteLine();
+        space--;
+        star += 2;
+      }
+    }
+}

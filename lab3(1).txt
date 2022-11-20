@@ -1,0 +1,15 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+      int i = 0;
+      Console.Write("Enter text: ");
+      string text = Console.ReadLine();
+      char[] arr = text.ToCharArray();
+      while(arr[i] != null)
+      {
+        Console.WriteLine(arr[i]);
+        i++;
+      }
+    }
+}

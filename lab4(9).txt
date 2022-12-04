@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+
+public class MainClass
+{
+  public static void Opposite(double[] arr)
+  {
+      for(int i = 0; i < arr.Length; i++)
+      {
+          arr[i] *= -1;
+      }
+  }
+  
+  public static void Main()
+  {   
+      Console.Write("Введите размер массива: ");
+      int len = int.Parse(Console.ReadLine());
+      Random rand = new Random();
+      double[] array = new double[len];
+
+    
+      Console.WriteLine("Массив: ");
+      for(int i = 0; i < len; i++)
+      {
+          array[i] = rand.NextDouble()*rand.Next(-1000, 1000);
+          Console.Write(array[i] + "\t");
+      }
+      Console.WriteLine();
+
+    
+      Console.WriteLine("Ответ: ");
+      Opposite(array);
+      for(int i = 0; i < len; i++)
+      {
+          Console.Write(array[i] + "\t");
+      }
+  }
+}

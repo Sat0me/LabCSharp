@@ -1,0 +1,16 @@
+using System;
+
+class Program {
+    static void Factorize(int a)
+    {
+        for(int num = 1; num <= a/num; num++)
+        {
+          if(a % num == 0) Console.WriteLine($"a = {num} * {a/num}");
+        }
+    }
+    
+    static void Main(string[] args) {
+        int k = int.Parse(Console.ReadLine());
+        Factorize(k);
+    }
+}

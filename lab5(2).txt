@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+
+class Program {
+    static void Main(string[] args) {
+        //Random rand = new Random();
+        var numbers = new List<int>() {2, 3, 0, 4, 5, 6, 0, 8};
+        Console.Write("Контейнер: ");
+        for(int i = 0; i < numbers.Count; i++)
+        {
+          Console.Write($"{numbers[i]} ");
+        }
+        Console.WriteLine();
+        var range = new List<int>();
+        for(int i = 0; i < numbers.Count; i++)
+        {
+          if(numbers[i] == 0)
+          {
+            i++;
+            for(; numbers[i] != 0; i++)
+            {
+              range.Add(numbers[i]);
+            }
+            break;
+          }
+        }
+        Console.Write("Ответ: ");
+        for(int i = 0; i < range.Count; i++)
+        {
+          Console.Write($"{range[i]} ");
+        }
+    }
+}

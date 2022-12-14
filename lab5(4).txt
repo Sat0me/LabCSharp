@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+
+class Program {
+    static List<int> Syracuse(int num)
+    {
+      int k = 0;
+      var seq = new List<int>(){num};
+      for(int i = 0; seq[i] != 1; i++)
+      {
+        if(seq[i] % 2 == 0)
+        {
+          k = seq[i]/2;
+          seq.Add(k);
+        }
+        else
+        {
+          k = seq[i] * 3 + 1;
+          seq.Add(k);
+        }
+      }
+      return seq;
+    }
+    static void Main(string[] args) {
+        Console.Write("Введите число: ");
+        int number = int.Parse(Console.ReadLine());
+        var sequence = new List<int>();
+        sequence = Syracuse(number);
+        for(int i = 0; i < sequence.Count; i++)
+        {
+          Console.Write($"{sequence[i]} ");
+        }
+    }
+}

@@ -1,0 +1,49 @@
+using System;
+
+class Program {
+    class obj {
+      public int x;
+      public int y;
+      public int z;
+
+      public void GetCoord()
+      {
+        Console.WriteLine($"x({x}) y({y}) z({z})");
+      }
+
+      public void GetDistance(obj a)
+      {
+        double vec = Math.Round(Math.Abs(Math.Sqrt(Math.Pow(a.x - x, 2) + Math.Pow(a.y - y, 2) + Math.Pow(a.z - z, 2))), 5);
+        Console.WriteLine($"Растояние между объектами: {vec}");
+      }
+
+      public void GetWay(obj a)
+      {
+        double way = Math.Round(z + Math.Abs(Math.Sqrt(Math.Pow(a.x - x, 2) + Math.Pow(a.y - y, 2))), 5);
+        Console.WriteLine($"Путь до объекта: {way}");
+      }
+    };
+  
+    static void Main(string[] args) {
+      obj myxa = new obj();
+      obj spider = new obj();
+      Console.Write("Введите координаты мухи в виде <x> <y> <z>: ");
+      string[] m_coor = (Console.ReadLine()).Split(' ');
+      myxa.x = int.Parse(m_coor[0]);
+      myxa.y = int.Parse(m_coor[1]);
+      myxa.z = int.Parse(m_coor[2]);
+      if(myxa.z != 0) {
+        Console.WriteLine("Ошибка!");
+        return;
+      }
+      Console.Write("Введите координаты паука в виде <x> <y> <z>: ");
+      string[] s_coor = (Console.ReadLine()).Split(' ');
+      spider.x = int.Parse(s_coor[0]);
+      spider.y = int.Parse(s_coor[1]);
+      spider.z = int.Parse(s_coor[2]);
+      //myxa.GetCoord();
+      //spider.GetCoord();
+      myxa.GetDistance(spider);
+      spider.GetWay(myxa);
+    }
+}

@@ -1,0 +1,69 @@
+using System;
+
+class Program {
+    class Sequence {
+      public int num1;
+      public int num2;
+      public char symbol1;
+      public char symbol2;
+
+      public Sequence(int num)
+      {
+        num1 = 0;
+        num2 = num;
+        symbol1 = ' ';
+        symbol2 = ' ';
+        GetSequenceInt();
+      }
+
+      public Sequence(int n1, int n2)
+      {
+        num1 = n1;
+        num2 = n2;
+        symbol1 = ' ';
+        symbol2 = ' ';
+        GetSequenceInt();
+      }
+
+      public Sequence(char ch)
+      {
+        num1 = 0;
+        num2 = 0;
+        symbol1 = 'a';
+        symbol2 = ch;
+        GetSequenceChar();
+      }
+
+      public Sequence(char ch1, char ch2)
+      {
+        num1 = 0;
+        num2 = 0;
+        symbol1 = ch1;
+        symbol2 = ch2;
+        GetSequenceChar();
+      }
+
+      public void GetSequenceInt()
+      {
+        for(int i = num1; i <= num2; i++)
+        {
+          Console.Write($"{i} ");
+        }
+        Console.WriteLine();
+      }
+      
+      public void GetSequenceChar()
+      {
+        for(char ch = symbol1; ch <= symbol2; ch++)
+        {
+          Console.Write($"{ch} ");
+        }
+        Console.WriteLine();
+      }
+    }
+  
+    static void Main(string[] args) {
+      Sequence testint = new Sequence(7, 12);
+      Sequence testchar = new Sequence('d', 'k');
+    }
+}

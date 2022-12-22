@@ -1,0 +1,29 @@
+using System;
+
+class Program {
+    class Worker{
+      public string name;
+      public string surname;
+      public int rate;
+      public int days;
+
+      public void GetFullName()
+      {
+        Console.WriteLine($"{surname} {name} - {GetSalary()}");
+      }
+
+      public int GetSalary()
+      {
+        return rate*days;
+      }
+    };
+  
+    static void Main(string[] args) {
+      Worker work = new Worker();
+      work.name = "Степан";
+      work.surname = "Павлов";
+      work.rate = 1800;
+      work.days = 30;
+      work.GetFullName();
+    }
+}

@@ -1,0 +1,200 @@
+using System;
+
+class Program {
+    class Date {
+      public int day;
+      public int month;
+      public int year;
+
+      public Date(int d, int m, int y)
+      {
+        day = Math.Abs(d);
+        month = Math.Abs(m);
+        year = Math.Abs(y);
+      }
+
+      public void Next()
+      {
+        day++;
+      }
+
+      public void Previous()
+      {
+        day--;
+      }
+
+      public void TestDate()
+      {
+        int test1 = day, test2 = 0;
+        if(day > 28)
+        {
+          while(test2 != test1)
+          {
+            switch(month % 12)
+            {
+            case 1: case 3: case 5: case 7: case 8: case 10: case 0:
+              if(day > 31)
+              {
+                month++;
+                day -= 31;
+              }
+              break;
+            case 2:
+              if(year % 4 == 0 && day > 29)
+              {
+                month++;
+                day -= 29;
+              }
+              else if(year % 4 != 0 && day > 28)
+              {
+                month++;
+                day -= 28;
+              }
+              break;
+            case 4: case 6: case 9: case 11:
+              if(day > 30)
+              {
+                month++;
+                day -= 30;
+              }
+              break;
+            default:
+              break;
+            }
+            test2 = test1;
+            test1 = day;
+          }
+        }
+        while(day < 1)
+        {
+          switch(month % 12)
+          {
+          case 1: case 2: case 4: case 6: case 8: case 9: case 11:
+            month--;
+            day += 31;
+            break;
+          case 5: case 7: case 10: case 0:
+            month--;
+            day += 30;
+            break;
+          case 3:
+            if(year % 4 == 0)
+            {
+              month--;
+              day += 29;
+            }
+            else 
+            {
+              month--;
+              day += 28;
+            }
+            break;
+          }
+        }
+  
+        while(month > 12)
+        {
+          year++;
+          month -= 12;
+        }
+  
+        while(month < 1)
+        {
+          year--;
+          month += 12;
+        }
+      }
+      
+      public void Print()
+      {
+        TestDate();
+        switch (month)
+        {
+        case 1:
+          Console.WriteLine($"The {day} of January {year}");
+          break;
+        case 2:
+          Console.WriteLine($"The {day} of February {year}");
+          break;
+        case 3:
+          Console.WriteLine($"The {day} of March {year}");
+          break;
+        case 4:
+          Console.WriteLine($"The {day} of April {year}");
+          break;
+        case 5:
+          Console.WriteLine($"The {day} of May {year}");
+          break;
+        case 6:
+          Console.WriteLine($"The {day} of June {year}");
+          break;
+        case 7:
+          Console.WriteLine($"The {day} of Jule {year}");
+          break;
+        case 8:
+          Console.WriteLine($"The {day} of August {year}");
+          break;
+        case 9:
+          Console.WriteLine($"The {day} of September {year}");
+          break;
+        case 10:
+          Console.WriteLine($"The {day} of October {year}");
+          break;
+        case 11:
+          Console.WriteLine($"The {day} of November {year}");
+          break;
+        case 12:
+          Console.WriteLine($"The {day} of December {year}");
+          break;
+        default:
+          break;
+        }
+      }
+
+      public void PrintForward(int n)
+      {
+        Date date0 = new Date(day, month, year);
+        for(int i = 0; i < n; i++)
+        {
+          date0.day++;
+          date0.Print();
+        }
+        Console.WriteLine();
+      }
+
+      public void PrintBackward(int n)
+      {
+        Date date0 = new Date(day, month, year);
+        for(int i = 0; i < n; i++)
+        {
+          date0.day--;
+          date0.Print();
+        }
+        Console.WriteLine();
+      }
+    }
+  
+    static void Main(string[] args) {
+      Console.Write("Введите дату: ");
+      string[] date = Console.ReadLine().Split('.');
+      Date date1 = new Date(int.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2]));
+      date1.Print();
+      Console.WriteLine();
+      Console.Write("Следующий день: ");
+      date1.Next();
+      date1.Print();
+      Console.WriteLine();
+      Console.Write("Предыдущий день: ");
+      date1.Previous();
+      date1.Previous();
+      date1.Print();
+      Console.WriteLine();
+      Console.Write("Введите n: ");
+      int n = int.Parse(Console.ReadLine());
+      Console.WriteLine();
+      date1.PrintForward(n);
+      Console.Write("Введите m: ");
+      int m = int.Parse(Console.ReadLine());
+      date1.PrintBackward(m);
+    }
+}
